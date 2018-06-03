@@ -39,11 +39,39 @@ public class RegularShip extends Enemy
     }
     public void movement()
     {
-        setLocation(getX()-xTambah,getY()+yTambah);
-        if(direct == 0)
-            xTambah += dy;
+        
+        if(direct==3)
+        {
+            if(getWorld().getObjects(Player.class).isEmpty())
+                return;
+            Actor player = (Actor)getWorld().getObjects(Player.class).get(0);
+            turnTowards(player.getX(),player.getY());
+            move(10);
+        }
         else
-            xTambah -= dy;
+        {
+            setLocation(getX()-xTambah,getY()+yTambah);
+            Actor player = (Actor)getWorld().getObjects(Player.class).get(0);
+            if(getX() == player.getX()&&direct ==1 || getX() == player.getX()&&direct ==0)
+            {
+                
+                xTambah = 0;
+                yTambah += 2;
+            
+            }
+            else
+            {
+                if( direct == 0)
+                {
+                    xTambah += dy;
+                }
+                else if(direct == 1)
+                {
+                    xTambah -= dy;
+                }
+            }
+        }
+
     }
    
     

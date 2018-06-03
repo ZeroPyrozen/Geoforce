@@ -17,6 +17,8 @@ public class Stage1 extends World
         //Adding Up Player
         Player play = new Player();
         addObject(play,getWidth()/2,600);
+        HitBox play1 = new HitBox();
+        addObject(play1,getWidth()/2,600);
         setEnemyGenerator();
     }
     public void setEnemyGenerator()

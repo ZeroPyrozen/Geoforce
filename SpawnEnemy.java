@@ -22,10 +22,23 @@ public class SpawnEnemy extends Actor
             if(count==40)
             {
                 basicWave();
+            }
+            else if(count == 60)
+            {
+                basicWave();
                 count = 0;
             }
             count++;
             
+        }
+        else if(timer>=800&&timer<=1600)
+        {
+            if(count==80)
+            {
+                suicideWave();
+                count = 0;
+            }
+            count++;
         }
         timer++;
         
@@ -33,8 +46,14 @@ public class SpawnEnemy extends Actor
     public void basicWave()
     {  
        //Right to Left
-       getWorld().addObject(new RegularShip(5,5,0),getWorld().getWidth(),0);
+       getWorld().addObject(new RegularShip(5,5,0),getWorld().getWidth(),1);
        //Left to Right
-       getWorld().addObject(new RegularShip(5,5,1),0,0);
+       getWorld().addObject(new RegularShip(5,5,1),1,100);
+       
+    }
+    public void suicideWave()
+    {
+        getWorld().addObject(new RegularShip(5,5,3),getWorld().getWidth(),1);
+        getWorld().addObject(new RegularShip(5,5,3),1,1);
     }
 }

@@ -20,9 +20,15 @@ public class Bullet extends Actor
         if(isTouching(RegularShip.class))
         {
             Actor RegularShip;
+            Actor Bullet;
+            Bullet = getOneIntersectingObject(Bullet.class);
             RegularShip = getOneIntersectingObject(RegularShip.class);
             if(RegularShip!=null)
+            {
                 getWorld().removeObject(RegularShip);
+                getWorld().removeObject(Bullet);
+            }
+                
         }
     }    
 }

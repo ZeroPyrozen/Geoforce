@@ -15,6 +15,7 @@ public class ExitGame extends Button
     public void act() 
     {
         // Add your action code here
+        
         if(Greenfoot.mouseClicked(this))
         {
             System.exit(0);

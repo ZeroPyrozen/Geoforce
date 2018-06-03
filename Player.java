@@ -15,7 +15,7 @@ public class Player extends Actor
     public boolean isAlive = true;
     private boolean intro = true;
     private int lives = 0;
-    private int flightSpeed = 10;
+    protected int flightSpeed = 10;
     private int flightVelocity = 50;
     private boolean isMove = false;
     private int counterBullet = 0;
