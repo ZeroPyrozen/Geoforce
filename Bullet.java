@@ -12,8 +12,17 @@ public class Bullet extends Actor
      * Act - do whatever the Bullet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private int bulletSpeed = 20;
     public void act() 
     {
         // Add your action code here.
+        setLocation(getX(),getY()-bulletSpeed);
+        if(isTouching(RegularShip.class))
+        {
+            Actor RegularShip;
+            RegularShip = getOneIntersectingObject(RegularShip.class);
+            if(RegularShip!=null)
+                getWorld().removeObject(RegularShip);
+        }
     }    
 }

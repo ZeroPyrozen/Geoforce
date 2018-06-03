@@ -15,9 +15,10 @@ public class Player extends Actor
     public boolean isAlive = true;
     private boolean intro = true;
     private int lives = 0;
-    private int flightSpeed = 5;
-    private int flightVelocity = 5;
+    private int flightSpeed = 10;
+    private int flightVelocity = 50;
     private boolean isMove = false;
+    private int counterBullet = 0;
     public Player()
     {
         lives = setLiveToMax();
@@ -56,8 +57,13 @@ public class Player extends Actor
             if(lives<=0)
             {
                 isAlive = false;
+                Greenfoot.stop();
             }
-            
+            if(Greenfoot.isKeyDown("z"))
+            {
+                //Shoot
+                shoot();
+            }
         }
     }
     private int setLiveToMax()
@@ -94,5 +100,17 @@ public class Player extends Actor
         {
             setLocation(getX(),getY()+flightSpeed);
         }
+    }
+    public void shoot()
+    {
+        if(counterBullet==10)
+        {
+            counterBullet=0;
+            Bullet peluruKiri = new Bullet();
+            getWorld().addObject(peluruKiri, getX()-30, getY());
+            Bullet peluruKanan = new Bullet();
+            getWorld().addObject(peluruKanan, getX()+30, getY());
+        }
+        counterBullet++;
     }
 }

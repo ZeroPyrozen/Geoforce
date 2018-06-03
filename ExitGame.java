@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * Write a description of class ExitGame here.
  * 
@@ -14,6 +14,10 @@ public class ExitGame extends Button
      */
     public void act() 
     {
-        // Add your action code here.
+        // Add your action code here
+        if(Greenfoot.mouseClicked(this))
+        {
+            System.exit(0);
+        }
     }    
 }
