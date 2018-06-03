@@ -17,6 +17,8 @@ public class SpawnEnemy extends Actor
     public void act() 
     {
         // Add your action code here.
+        if(timer%10==0)
+            spawnParticle();
         if(timer<=800)
         {
             if(count==40)
@@ -41,6 +43,7 @@ public class SpawnEnemy extends Actor
             count++;
         }
         timer++;
+        System.out.println(timer);
         
     }
     public void basicWave()
@@ -55,5 +58,10 @@ public class SpawnEnemy extends Actor
     {
         getWorld().addObject(new RegularShip(5,5,3),getWorld().getWidth(),1);
         getWorld().addObject(new RegularShip(5,5,3),1,1);
+    }
+    public void spawnParticle()
+    {
+        ParticleGenerator s = new ParticleGenerator();
+        getWorld().addObject(s, Greenfoot.getRandomNumber(getWorld().getWidth()), 0);
     }
 }
