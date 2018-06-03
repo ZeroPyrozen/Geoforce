@@ -30,29 +30,29 @@ public class Player extends Actor
         if(isAlive)
         {
             flight();
-            //if(isBoundaries()!=0)
-            //{
+            if(isBoundaries()!=0)
+            {
                 //Teleportation
-              //  switch(isBoundaries())
-               // {
-               //     case 1:
-                 //   //to Upper
-              //      setLocation(getX(),10);
-               //         break;
-                //    case 2:
+                switch(isBoundaries())
+                {
+                   case 1:
+                    //to Upper
+                   setLocation(getX(),10);
+                        break;
+                   case 2:
                     //to Lower
-               //     setLocation(getX(),1230);
-               //         break;
-               //     case 3:
+                   setLocation(getX(),getWorld().getHeight());
+                        break;
+                   case 3:
                     //to Right
-             //       setLocation(430,getY());
-                //        break;
-              //      case 4:
+                   setLocation(getWorld().getWidth(),getY());
+                        break;
+                   case 4:
                     //to Left
-              //      setLocation(290,getY());
-               //         break;
-               // }
-            //}
+                   setLocation(10,getY());
+                        break;
+                }
+            }
             
             if(lives<=0)
             {
@@ -72,13 +72,13 @@ public class Player extends Actor
     }
     private int isBoundaries()
     {
-        if(getY()>1200) //Teleport to Up
+        if(getY()>getWorld().getHeight()) //Teleport to Up
             return 1;
-        else if(getY()<=0) //Teleport to Down
+        else if(getY()<0) //Teleport to Down
             return 2;
-        else if(getX()<240) //Teleport to Right
+        else if(getX()<0) //Teleport to Right
             return 3;
-        else if(getX()>480) //Teleport to Left
+        else if(getX()>getWorld().getWidth()) //Teleport to Left
             return 4;
         return 0;
     }

@@ -19,21 +19,7 @@ public class HitBox extends Player
     public void act() 
     {
         // Add your action code here.
-        if(Greenfoot.isKeyDown("left"))
-        {
-            setLocation(getX()-flightSpeed,getY());
-        }
-        if(Greenfoot.isKeyDown("right"))
-        {
-            setLocation(getX()+flightSpeed,getY());
-        }
-        if(Greenfoot.isKeyDown("up"))
-        {
-            setLocation(getX(),getY()-flightSpeed);
-        }
-        if(Greenfoot.isKeyDown("down"))
-        {
-            setLocation(getX(),getY()+flightSpeed);
-        }
+        Actor player = (Actor)getWorld().getObjects(Player.class).get(0);
+        setLocation(player.getX(),player.getY());
     }    
 }
