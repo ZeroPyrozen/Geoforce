@@ -16,6 +16,8 @@ public class Player extends Actor
     private boolean intro = true;
     private int lives = 0;
     private int flightSpeed = 5;
+    private int flightVelocity = 5;
+    private boolean isMove = false;
     public Player()
     {
         lives = setLiveToMax();
@@ -27,21 +29,30 @@ public class Player extends Actor
         if(isAlive)
         {
             flight();
-            if(isBoundaries()!=0)
-            {
+            //if(isBoundaries()!=0)
+            //{
                 //Teleportation
-                switch(isBoundaries())
-                {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                }
-            }
+              //  switch(isBoundaries())
+               // {
+               //     case 1:
+                 //   //to Upper
+              //      setLocation(getX(),10);
+               //         break;
+                //    case 2:
+                    //to Lower
+               //     setLocation(getX(),1230);
+               //         break;
+               //     case 3:
+                    //to Right
+             //       setLocation(430,getY());
+                //        break;
+              //      case 4:
+                    //to Left
+              //      setLocation(290,getY());
+               //         break;
+               // }
+            //}
+            
             if(lives<=0)
             {
                 isAlive = false;
@@ -67,6 +78,21 @@ public class Player extends Actor
     }
     private void flight()
     {
-        
+        if(Greenfoot.isKeyDown("left"))
+        {
+            setLocation(getX()-flightSpeed,getY());
+        }
+        if(Greenfoot.isKeyDown("right"))
+        {
+            setLocation(getX()+flightSpeed,getY());
+        }
+        if(Greenfoot.isKeyDown("up"))
+        {
+            setLocation(getX(),getY()-flightSpeed);
+        }
+        if(Greenfoot.isKeyDown("down"))
+        {
+            setLocation(getX(),getY()+flightSpeed);
+        }
     }
 }

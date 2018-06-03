@@ -14,6 +14,6 @@ public class Stage1 extends World
     {
         //Adding Up Player
         Player play = new Player();
-        addObject(play,(2*getWidth())/3,600);
+        addObject(play,getWidth()/2,600);
     }
 }
