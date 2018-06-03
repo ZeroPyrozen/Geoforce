@@ -10,7 +10,7 @@ public class MainMenu extends World
 {
 
     /**
-     * Constructor for objects of class MainMenu.
+     * Set Screen Resolution to 1280 x 720 and Prepare Title Screen
      * 
      */
     public MainMenu()
@@ -19,13 +19,14 @@ public class MainMenu extends World
         super(1280, 720, 1); 
         prepare();
     }
-
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
     {
-
+       TitleScreen judul = new TitleScreen();
+       judul.act();
     }
 }
