@@ -14,8 +14,10 @@ public class RegularShip extends Enemy
      */
     public int xTambah = 0;
     public int yTambah = 0;
-    public int dy = 1;
+    public int dy = 0;
     public int direct = 0;
+    private int fire_rate = 20;
+    
     public RegularShip(int i,int j,int dir)
     {
        xTambah = i;
@@ -25,17 +27,28 @@ public class RegularShip extends Enemy
     public void act() 
     {
         // Add your action code here.
-        Actor Player;
         movement();
+        if (fire_rate > 0) {
+            fire_rate--;
+        }
+        if(fire_rate == 0 && Greenfoot.getRandomNumber(100)<3)
+        {
+            shoot();
+        }
         if(getX()>getWorld().getWidth()||getX()<-100||getY()<0||getY()> getWorld().getHeight())
         {
             destroy();
         }
-        
     }
     public void destroy()
     {
         getWorld().removeObject(this);
+    }
+    public void shoot()
+    {
+        fire_rate = 50;
+        Bullet peluru = new Bullet(1);
+        getWorld().addObject(peluru, getX(), getY());
     }
     public void movement()
     {
@@ -45,7 +58,12 @@ public class RegularShip extends Enemy
             if(getWorld().getObjects(Player.class).isEmpty())
                 return;
             Actor player = (Actor)getWorld().getObjects(Player.class).get(0);
-            turnTowards(player.getX(),player.getY());
+            if(player!=null)
+            {
+            if(Greenfoot.getRandomNumber(100) < 40)
+                turnTowards(player.getX(),player.getY());
+            
+            }
             move(10);
         }
         else

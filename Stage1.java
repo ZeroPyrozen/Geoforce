@@ -24,14 +24,15 @@ public class Stage1 extends World
     {
         //Adding Up Player
         Player play = new Player();
-        GreenfootSound bgm = new GreenfootSound("bgm.mp3");
-        //bgm.play();
+        GreenfootSound bgm = new GreenfootSound("bgm1.mp3");
+        bgm.play();
         addObject(play,getWidth()/2,600);
         HitBox play1 = new HitBox();
         addObject(play1,getWidth()/2,600);
         setEnemyGenerator();
         
     }
+    
     public void setEnemyGenerator()
     {
         SpawnEnemy s = new SpawnEnemy();

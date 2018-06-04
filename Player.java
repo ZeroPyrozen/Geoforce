@@ -19,6 +19,7 @@ public class Player extends Actor
     private int flightVelocity = 50;
     private boolean isMove = false;
     private int counterBullet = 0;
+    public int score = 0;
     public Player()
     {
         lives = setLiveToMax();
@@ -29,6 +30,7 @@ public class Player extends Actor
         // Add your action code here.
         if(isAlive)
         {
+            showScore();
             flight();
             if(isBoundaries()!=0)
             {
@@ -53,22 +55,50 @@ public class Player extends Actor
                         break;
                 }
             }
-            
+            if(isCollide())
+            {
+                lives--;
+            }
             if(lives<=0)
             {
                 isAlive = false;
-                Greenfoot.stop();
+                
+                
+                Greenfoot.setWorld(new MainMenu());
             }
             if(Greenfoot.isKeyDown("z"))
             {
                 //Shoot
                 shoot();
             }
+            score++;
         }
     }
     private int setLiveToMax()
     {
         return 5;
+    }
+    public boolean isCollide()
+    {
+        Actor par = getOneObjectAtOffset(0,0,ParticleGenerator.class);
+        Actor reg = getOneObjectAtOffset(0,0,RegularShip.class);
+        Actor bul = getOneObjectAtOffset(0,0,Bullet.class);
+        if(par!=null)
+        {
+            getWorld().removeObject(par);
+            return true;
+        }
+        if(reg!=null)
+        {
+            getWorld().removeObject(reg);
+            return true;
+        }
+        if(bul!=null)
+        {
+            getWorld().removeObject(bul);
+            return true;
+        }
+        return false;
     }
     private int isBoundaries()
     {
@@ -101,16 +131,21 @@ public class Player extends Actor
             setLocation(getX(),getY()+flightSpeed);
         }
     }
+    public void showScore()
+    {
+       getWorld().showText("Score: "+score, 100, 200);
+    }
     public void shoot()
     {
         if(counterBullet==10)
         {
             counterBullet=0;
-            Bullet peluruKiri = new Bullet();
+            PlayerBullet peluruKiri = new PlayerBullet(0);
             getWorld().addObject(peluruKiri, getX()-30, getY());
-            Bullet peluruKanan = new Bullet();
+            PlayerBullet peluruKanan = new PlayerBullet(0);
             getWorld().addObject(peluruKanan, getX()+30, getY());
         }
         counterBullet++;
     }
 }
+

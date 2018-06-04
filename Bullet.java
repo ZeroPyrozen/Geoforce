@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Bullet here.
+ * Write a description of class PlayerBullet here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -9,23 +9,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Bullet extends Actor
 {
     /**
-     * Act - do whatever the Bullet wants to do. This method is called whenever
+     * Act - do whatever the PlayerBullet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private int bulletSpeed = 20;
+    private int bulletSpeed = 10;
+    private int code = 0;
+    public Bullet(int code)
+    {
+        this.code = code;
+    }
     public void act() 
     {
         // Add your action code here.
-        setLocation(getX(),getY()-bulletSpeed);
-        if(isTouching(RegularShip.class))
+        if(code==0)
+            setLocation(getX(),getY()-bulletSpeed);
+        else
+            setLocation(getX(),getY()+bulletSpeed);
+        if(isTouching(Player.class))
         {
-            Actor RegularShip;
+            Actor Player;
             Actor Bullet;
             Bullet = getOneIntersectingObject(Bullet.class);
-            RegularShip = getOneIntersectingObject(RegularShip.class);
-            if(RegularShip!=null)
+            Player = getOneIntersectingObject(Player.class);
+            if(Player!=null)
             {
-                getWorld().removeObject(RegularShip);
                 getWorld().removeObject(Bullet);
             }
                 

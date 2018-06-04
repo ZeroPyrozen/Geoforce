@@ -12,16 +12,28 @@ public class ParticleGenerator extends Actor
      * Act - do whatever the ParticleGenerator wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    
+    public int dir = 0;
+    public ParticleGenerator(int dir)
+    {
+        this.dir = dir;
+    }
     public void act() 
     {
         // Add your action code here.
-        setLocation(getX(),getY()+10);
+        if(dir == 0)
+        {
+            setLocation(getX(),getY()+10);
+        }
+        else if(dir ==1)
+        {
+            setLocation(getX(),getY()-10);
+        }
         
         if(getY()>getWorld().getHeight())
         {
             destroy();
         }
+       
     }
     public void destroy()
     {
