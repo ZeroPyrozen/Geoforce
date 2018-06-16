@@ -20,6 +20,7 @@ public class Player extends Actor
     private boolean isMove = false;
     private int counterBullet = 0;
     public int score = 0;
+    private GreenfootSound bg;
     public Player()
     {
         lives = setLiveToMax();
@@ -39,12 +40,12 @@ public class Player extends Actor
                 {
                    case 1:
                     //to Upper
-                   setLocation(getX(),10);
-                        break;
+                   setLocation(getX(),getWorld().getHeight());
+                       break;
                    case 2:
                     //to Lower
-                   setLocation(getX(),getWorld().getHeight());
-                        break;
+                   setLocation(getX(),0);
+                       break;
                    case 3:
                     //to Right
                    setLocation(getWorld().getWidth(),getY());
@@ -62,8 +63,7 @@ public class Player extends Actor
             if(lives<=0)
             {
                 isAlive = false;
-                
-                
+                bg.stop();
                 Greenfoot.setWorld(new MainMenu());
             }
             if(Greenfoot.isKeyDown("z"))
@@ -147,5 +147,11 @@ public class Player extends Actor
         }
         counterBullet++;
     }
+    public GreenfootSound setBGM(GreenfootSound bg)
+    {
+        this.bg = bg;
+        return bg;
+    }
+    
 }
 

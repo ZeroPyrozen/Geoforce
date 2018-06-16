@@ -17,4 +17,6 @@ comment7.params=
 comment7.target=void\ showScore()
 comment8.params=
 comment8.target=void\ shoot()
-numComments=9
+comment9.params=bg
+comment9.target=greenfoot.GreenfootSound\ setBGM(greenfoot.GreenfootSound)
+numComments=10
