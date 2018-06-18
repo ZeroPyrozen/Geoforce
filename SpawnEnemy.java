@@ -13,16 +13,23 @@ public class SpawnEnemy extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public int count = 0;
-    public int timer = 0;
+    public long currentTimeM = 0;
+    public long currentTimeS = 0;
+    public long startTime = 0;
+    public SpawnEnemy()
+    {
+        startTime = System.currentTimeMillis();
+    }
     public void act() 
     {
         // Add your action code here.
-        if(timer%10==0)
-       {
+        currentTimeM = System.currentTimeMillis() - startTime;
+        if((currentTimeM/1000)%10==0)
+        {
            spawnParticle1();
            //spawnParticle2();
         }
-        if(timer<=800)
+        if((currentTimeM/1000)<=800)
         {
             if(count==40)
             {
@@ -36,7 +43,7 @@ public class SpawnEnemy extends Actor
             count++;
             
         }
-        else if(timer>=800&&timer<=1600)
+        else if((currentTimeM/1000)>=800&&(currentTimeM/1000)<=1600)
         {
             if(count==80)
             {
@@ -45,7 +52,6 @@ public class SpawnEnemy extends Actor
             }
             count++;
         }
-        timer++;
         //System.out.println(timer);
         
     }
