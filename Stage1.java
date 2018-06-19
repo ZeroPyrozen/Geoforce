@@ -9,15 +9,6 @@ public class Stage1 extends World
         // Create a new world with 1280x720 cells with a cell size of 1x1 pixels.
         super(1280, 720, 1, false);
         prepare();
-         // backgroundMusic.playLoop();
-          //public void stopped()
-        //  {
-        //      backgroundMusic.pause();
-        //  }
-        //    public void started()
-        //  {
-        //      backgroundMusic.playLoop();
-        //  }
     }
     
     public void prepare()
