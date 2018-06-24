@@ -1,19 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class HowToPlayMenu here.
+ * Write a description of class CreditMenu here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class HowToPlayMenu extends World
+public class CreditMenu extends World
 {
 
     /**
-     * Constructor for objects of class HowToPlayMenu.
+     * Constructor for objects of class CreditMenu.
      * 
      */
-    public HowToPlayMenu()
+    public CreditMenu()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1280, 720, 1);
@@ -24,6 +24,6 @@ public class HowToPlayMenu extends World
 
         Back ba = new Back();
         addObject(ba,getWidth()/2,185);
-        ba.setLocation(285,650);
+        ba.setLocation(980,650);
     }
 }

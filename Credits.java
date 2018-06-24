@@ -14,6 +14,9 @@ public class Credits extends Button
      */
     public void act() 
     {
-        // Add your action code here.
+       if(Greenfoot.mouseClicked(this))
+       {
+          Greenfoot.setWorld(new CreditMenu());
+       }
     }    
 }
