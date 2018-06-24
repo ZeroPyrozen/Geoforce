@@ -47,7 +47,7 @@ public class SpawnEnemy extends Actor
            }
            count++;
         }
-        if((currentTimeM/1000)>=8)
+        if((currentTimeM/1000)>=8&&(currentTimeM/1000)<=114)
         {
             if(((currentTimeM-startTime)/10)%10==0)
                 spawnParticle1();
@@ -73,9 +73,35 @@ public class SpawnEnemy extends Actor
                 count++;
             }
         }
+        if((currentTimeM/1000)>=28&&(currentTimeM/1000)<=60)
+        {
+               if(count>=20)
+               {
+                    advanceWaveCurve1(Greenfoot.getRandomNumber(getWorld().getWidth()),getWorld().getHeight());
+                    count=0;
+               }
+               count++;
+        }
+        if((currentTimeM/1000)>=45&&(currentTimeM/1000)<=60)
+        {
+            if(count>=40)
+            {
+                    count = 100;
+                    for(int i=1; i<=2; i++)
+                    {
+                        if(i%2==0)
+                            basicWaveLeft(70,count);
+                        else
+                            basicWaveLeft(20,count);
+                        count+=100;
+                    }
+                count=0;
+            }
+                count++;
+        }
         if((currentTimeM/1000)>=98&&(currentTimeM/1000)<=110)
         {
-            if(count>=20)
+            if(count>=80)
             {
                     count = 100;
                     for(int i=1; i<=2; i++)
@@ -91,6 +117,10 @@ public class SpawnEnemy extends Actor
         
         
         
+    }
+    public void advanceWaveCurve1(int x, int y)
+    {
+        getWorld().addObject(new RegularShip(5,5,3),x,y);
     }
     public void basicWaveRight(int x, int y)
     {  

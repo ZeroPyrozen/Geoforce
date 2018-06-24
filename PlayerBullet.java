@@ -33,8 +33,9 @@ public class PlayerBullet extends Actor
             regularShip = getOneIntersectingObject(RegularShip.class);
             if(regularShip!=null)
             {
-                getWorld().removeObject(regularShip);
                 getWorld().removeObject(playerBullet);
+                getWorld().removeObject(regularShip);
+                
             }
              
         }
@@ -46,8 +47,9 @@ public class PlayerBullet extends Actor
             playerBullet = getOneIntersectingObject(PlayerBullet.class);
             if(particleAs!=null)
             {
-                getWorld().removeObject(particleAs);
                 getWorld().removeObject(playerBullet);
+                getWorld().removeObject(particleAs);
+                
             }
         }
          

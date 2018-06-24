@@ -28,10 +28,15 @@ public class RegularShip extends Enemy
        {
            canShoot = true;       
        }
-       else
+       else if(direct==2)
        {
            yTambah = 10;
            canShoot = false;
+       }
+       else
+       {
+           canShoot = false;
+           setRotation(180);
        }
            
     }
@@ -39,7 +44,7 @@ public class RegularShip extends Enemy
     {
         // Add your action code here.
         movement();
-        if(canShoot)
+        if(canShoot==true)
         {
             if (fire_rate > 0) 
             {
@@ -77,7 +82,8 @@ public class RegularShip extends Enemy
                 {
                     xTambah = 0;
                     yTambah = 10;
-                    hasDirection = true; 
+                    hasDirection = true;
+                    canShoot = false;
                 }
   
                 if( direct == 0)
@@ -91,16 +97,21 @@ public class RegularShip extends Enemy
                      setLocation(getX()+xTambah,getY()+yTambah);
                 }
         }
-        else
+        else if(direct==2)
         {
             
             setLocation(getX(),getY()+yTambah);
             if(yTambah<=20)
             {
                 yTambah+=dy;
-                dy++;
             }
                 
+        }
+        else if(direct==3)
+        {
+            setLocation(getX(), getY()-yTambah);
+            if(yTambah<=50)
+                yTambah = (int)(yTambah*(float)1.1);
         }
                 
  
