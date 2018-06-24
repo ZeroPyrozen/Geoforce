@@ -36,5 +36,10 @@ public class MainMenu extends World
         title.setLocation(getWidth()/2,175);
         startgame.setLocation(getWidth()/2,407);
         exitgame.setLocation(getWidth()/2,579);
+        HowToPlay how = new HowToPlay();
+        addObject(how,(getWidth()*(3/4)),185);
+        how.setLocation(208,653);
+        Credits credits = new Credits();
+        addObject(credits,1109,651);
     }
 }
