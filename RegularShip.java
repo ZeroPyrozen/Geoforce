@@ -71,11 +71,13 @@ public class RegularShip extends Enemy
         if(direct==0||direct==1)
         {
                 Actor player = (Actor)getWorld().getObjects(Player.class).get(0);
+                if(hasDirection!=true)
+                    yTambah = 0;
                 if(getX() == player.getX()&&direct ==1 || getX() == player.getX()&&direct ==0)
                 {
                     xTambah = 0;
                     yTambah = 10;
-
+                    hasDirection = true; 
                 }
   
                 if( direct == 0)

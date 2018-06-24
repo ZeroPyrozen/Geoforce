@@ -51,26 +51,41 @@ public class SpawnEnemy extends Actor
         {
             if(((currentTimeM-startTime)/10)%10==0)
                 spawnParticle1();
-            if(count==60)
+        }
+        if((currentTimeM/1000)>=14&&(currentTimeM/1000)<=27)
+        {
+            if((currentTimeM/1000)<=23)
             {
-                basicWave();
-                count=0;
+                if(count>=20)
+                {
+                    basicWaveLeft();
+                    count=0;
+                }
+                count++;
             }
-            count++;
-            
+            else
+            {
+                if(count>=20)
+                {
+                    basicWaveRight();
+                    count=0;
+                }
+                count++;
+            }
         }
         
         
         
-        
     }
-    public void basicWave()
+    public void basicWaveRight()
     {  
        //Right to Left
-       getWorld().addObject(new RegularShip(5,5,0),getWorld().getWidth(),1);
-       //Left to Right
-       getWorld().addObject(new RegularShip(5,5,1),20,100);
-       
+       getWorld().addObject(new RegularShip(5,5,0),getWorld().getWidth(),150);
+    }
+    public void basicWaveLeft()
+    {
+        //Left to Right
+        getWorld().addObject(new RegularShip(5,5,1),20,100);
     }
     public void firstWave()
     {
