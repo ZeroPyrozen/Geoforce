@@ -99,11 +99,54 @@ public class SpawnEnemy extends Actor
             }
                 count++;
         }
+        if((currentTimeM/1000)>=68&&(currentTimeM/1000)<=75)
+        {
+            if(count>=40)
+            {
+                    count = 100;
+                    for(int i=1; i<=2; i++)
+                    {
+                        if(i%2==0)
+                            basicWaveRight(getWorld().getWidth(),count);
+                        else
+                            basicWaveRight(getWorld().getWidth(),count);
+                        count+=100;
+                    }
+                count=0;
+            }
+                count++;
+        }
+        if((currentTimeM/1000)>=75&&(currentTimeM/1000)<=82)
+        {
+            if(count>=40)
+            {
+                    count = 100;
+                    for(int i=1; i<=2; i++)
+                    {
+                        if(i%2==0)
+                            basicWaveLeft(70,count);
+                        else
+                            basicWaveLeft(20,count);
+                        count+=100;
+                    }
+                count=0;
+            }
+                count++;
+        }
+        if((currentTimeM/1000)>=82&&(currentTimeM/1000)<=97)
+        {
+               if(count>=20)
+               {
+                    advanceWaveCurve1(Greenfoot.getRandomNumber(getWorld().getWidth()),Greenfoot.getRandomNumber(getWorld().getHeight()));
+                    count=0;
+               }
+               count++;
+        }
         if((currentTimeM/1000)>=98&&(currentTimeM/1000)<=110)
         {
             if(count>=80)
             {
-                    count = 100;
+                count = 100;
                     for(int i=1; i<=2; i++)
                     {
                         basicWaveLeft(20,count);
@@ -112,7 +155,7 @@ public class SpawnEnemy extends Actor
                     }
                 count=0;
             }
-                count++;
+            count++;
         }
         
         
