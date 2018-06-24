@@ -12,10 +12,13 @@ public class SpawnEnemy extends Actor
      * Act - do whatever the SpawnEnemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public int count = 0;
+    private int count = 0;
     public long currentTimeM = 0;
     public long currentTimeS = 0;
     public long startTime = 0;
+    private int pX = 0, pY = 0;
+    private boolean turnBack = false;
+    private int countFirst = 0;
     public SpawnEnemy()
     {
         startTime = System.currentTimeMillis();
@@ -24,14 +27,30 @@ public class SpawnEnemy extends Actor
     {
         // Add your action code here.
         currentTimeM = System.currentTimeMillis() - startTime;
-
-        if((currentTimeM/1000)%1000==0)
+        
+        if((currentTimeM/1000)<=15)
         {
-           
-           //spawnParticle2();
+            
+           if(countFirst==10)
+           {
+               
+               if(pX==1280)
+                    turnBack=true;
+               else if(pX==0)
+                    turnBack=false;
+               if(turnBack==false)
+                    pX +=160;
+               else
+                    pX-=160;
+               firstWave();
+               countFirst = 0;
+           }
+           countFirst++;
         }
-        if((currentTimeM/1000)<=800)
+        if((currentTimeM/1000)>=8)
         {
+            if(((currentTimeM-startTime)/10)%10==0)
+                spawnParticle1();
             if(count==60)
             {
                 basicWave();
@@ -40,9 +59,8 @@ public class SpawnEnemy extends Actor
             count++;
             
         }
-        //System.out.println(timer);
-        if(((currentTimeM-startTime)/10)%10==0)
-            spawnParticle1();
+        
+        
         
         
     }
@@ -54,7 +72,10 @@ public class SpawnEnemy extends Actor
        getWorld().addObject(new RegularShip(5,5,1),20,100);
        
     }
-
+    public void firstWave()
+    {
+        getWorld().addObject(new RegularShip(5,5,2),pX,20);
+    }
     public void spawnParticle1()
     {
         ParticleGenerator s = new ParticleGenerator(0);

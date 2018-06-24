@@ -18,24 +18,39 @@ public class RegularShip extends Enemy
     public int direct = 0;
     private int fire_rate = 20;
     private boolean hasDirection = false;
-    
+    private boolean canShoot = false;
     public RegularShip(int i,int j,int dir)
     {
        xTambah = i;
        yTambah = j;
        direct = dir;
+       if(direct==0||direct==1)
+       {
+           canShoot = true;       
+       }
+       else
+       {
+           yTambah = 10;
+           canShoot = false;
+       }
+           
     }
     public void act() 
     {
         // Add your action code here.
         movement();
-        if (fire_rate > 0) {
-            fire_rate--;
-        }
-        if(fire_rate == 0 && Greenfoot.getRandomNumber(100)<3)
+        if(canShoot)
         {
-            shoot();
+            if (fire_rate > 0) 
+            {
+                fire_rate--;
+            }
+            if(fire_rate == 0 && Greenfoot.getRandomNumber(100)<3)
+            {
+                shoot();
+            }
         }
+        
         if(getX()>getWorld().getWidth()||getX()<-100||getY()<0||getY()> getWorld().getHeight())
         {
             destroy();
@@ -53,38 +68,40 @@ public class RegularShip extends Enemy
     }
     public void movement()
     {
-        
-
-
+        if(direct==0||direct==1)
+        {
                 Actor player = (Actor)getWorld().getObjects(Player.class).get(0);
                 if(getX() == player.getX()&&direct ==1 || getX() == player.getX()&&direct ==0)
                 {
                     xTambah = 0;
                     yTambah = 10;
-                    if( direct == 0)
-                    {
-                        xTambah += dy;
-                        setLocation(getX()-xTambah,getY()+yTambah);
-                    }
-                    else if(direct == 1)
-                    {
-                        xTambah += dy;
-                        setLocation(getX()+xTambah,getY()+yTambah);
-                    }
+
                 }
-                else
+  
+                if( direct == 0)
                 {
-                    if( direct == 0)
-                    {
-                        xTambah += dy;
-                        setLocation(getX()-xTambah,getY()+yTambah);
-                    }
-                    else if(direct == 1)
-                    {
-                        xTambah += dy;
-                        setLocation(getX()+xTambah,getY()+yTambah);
-                    }
+                     xTambah += dy;
+                     setLocation(getX()-xTambah,getY()+yTambah);
                 }
+                else if(direct == 1)
+                {
+                     xTambah += dy;
+                     setLocation(getX()+xTambah,getY()+yTambah);
+                }
+        }
+        else
+        {
+            
+            setLocation(getX(),getY()+yTambah);
+            if(yTambah<=20)
+            {
+                yTambah+=dy;
+                dy++;
+            }
+                
+        }
+                
+ 
             
         
 
