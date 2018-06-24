@@ -13,12 +13,12 @@ public class SpawnEnemy extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private int count = 0;
-    public long currentTimeM = 0;
-    public long currentTimeS = 0;
-    public long startTime = 0;
+    private long currentTimeM = 0;
+    private long currentTimeS = 0;
+    private long startTime = 0;
     private int pX = 0, pY = 0;
     private boolean turnBack = false;
-    private int countFirst = 0;
+
     public SpawnEnemy()
     {
         startTime = System.currentTimeMillis();
@@ -31,7 +31,7 @@ public class SpawnEnemy extends Actor
         if((currentTimeM/1000)<=15)
         {
             
-           if(countFirst==10)
+           if(count==10)
            {
                
                if(pX==1280)
@@ -43,9 +43,9 @@ public class SpawnEnemy extends Actor
                else
                     pX-=160;
                firstWave();
-               countFirst = 0;
+               count = 0;
            }
-           countFirst++;
+           count++;
         }
         if((currentTimeM/1000)>=8)
         {
@@ -58,7 +58,7 @@ public class SpawnEnemy extends Actor
             {
                 if(count>=20)
                 {
-                    basicWaveLeft();
+                    basicWaveLeft(20,100);
                     count=0;
                 }
                 count++;
@@ -67,25 +67,40 @@ public class SpawnEnemy extends Actor
             {
                 if(count>=20)
                 {
-                    basicWaveRight();
+                    basicWaveRight(getWorld().getWidth(),150);
                     count=0;
                 }
                 count++;
             }
         }
+        if((currentTimeM/1000)>=98&&(currentTimeM/1000)<=110)
+        {
+            if(count>=20)
+            {
+                    count = 100;
+                    for(int i=1; i<=2; i++)
+                    {
+                        basicWaveLeft(20,count);
+                        basicWaveRight(getWorld().getWidth(),count+150);
+                        count+=100;
+                    }
+                count=0;
+            }
+                count++;
+        }
         
         
         
     }
-    public void basicWaveRight()
+    public void basicWaveRight(int x, int y)
     {  
        //Right to Left
-       getWorld().addObject(new RegularShip(5,5,0),getWorld().getWidth(),150);
+       getWorld().addObject(new RegularShip(5,5,0),x,y);
     }
-    public void basicWaveLeft()
+    public void basicWaveLeft(int x, int y)
     {
         //Left to Right
-        getWorld().addObject(new RegularShip(5,5,1),20,100);
+        getWorld().addObject(new RegularShip(5,5,1),x,y);
     }
     public void firstWave()
     {

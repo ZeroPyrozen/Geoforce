@@ -76,7 +76,7 @@ public class Player extends Actor
     }
     private int setLiveToMax()
     {
-        return 5;
+        return 10000;
     }
     public boolean isCollide()
     {
