@@ -14,14 +14,19 @@ public class SpawnEnemy extends Actor
      */
     private int count = 0;
     private long currentTimeM = 0;
-    private long currentTimeS = 0;
+    private int score = 0;
     private long startTime = 0;
     private int pX = 0, pY = 0;
     private boolean turnBack = false;
-
+    private GreenfootSound bgm;
     public SpawnEnemy()
     {
         startTime = System.currentTimeMillis();
+        Player par = (Player)getWorld().getObjects(Player.class).get(0);
+        if(par!=null)
+        {
+            bgm = par.getBGM();
+        }
     }
     public void act() 
     {
@@ -157,7 +162,11 @@ public class SpawnEnemy extends Actor
             }
             count++;
         }
-        
+        if((currentTimeM/1000)>=120)
+        {
+            bgm.stop();
+            Greenfoot.setWorld(new GameOver());
+        }
         
         
     }

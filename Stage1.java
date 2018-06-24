@@ -22,6 +22,7 @@ public class Stage1 extends World
         addObject(play1,getWidth()/2,600);
         setEnemyGenerator();
         play.setBGM(bgm);
+        
     }
     
     public void setEnemyGenerator()

@@ -153,6 +153,10 @@ public class Player extends Actor
         this.bg = bg;
         return bg;
     }
+    public GreenfootSound getBGM()
+    {
+        return bg;
+    }
     public int setScore(int score)
     {
         return this.score = score;
