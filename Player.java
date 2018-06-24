@@ -64,7 +64,7 @@ public class Player extends Actor
             {
                 isAlive = false;
                 bg.stop();
-                Greenfoot.setWorld(new MainMenu());
+                Greenfoot.setWorld(new GameOver());
             }
             if(Greenfoot.isKeyDown("z"))
             {
@@ -76,7 +76,7 @@ public class Player extends Actor
     }
     private int setLiveToMax()
     {
-        return 10000;
+        return 5;
     }
     public boolean isCollide()
     {

@@ -1,23 +1,22 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class StartGame here.
+ * Write a description of class Back here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class StartGame extends Button
+public class Back extends Button
 {
     /**
-     * Act - do whatever the StartGame wants to do. This method is called whenever
+     * Act - do whatever the Back wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        // Add your action code here.
        if(Greenfoot.mouseClicked(this))
        {
-          Greenfoot.setWorld(new Stage1());
+          Greenfoot.setWorld(new MainMenu());
        }
     }    
 }
