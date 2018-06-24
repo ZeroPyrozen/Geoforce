@@ -22,11 +22,7 @@ public class SpawnEnemy extends Actor
     public SpawnEnemy()
     {
         startTime = System.currentTimeMillis();
-        Player par = (Player)getWorld().getObjects(Player.class).get(0);
-        if(par!=null)
-        {
-            bgm = par.getBGM();
-        }
+
     }
     public void act() 
     {
@@ -164,7 +160,7 @@ public class SpawnEnemy extends Actor
         }
         if((currentTimeM/1000)>=120)
         {
-            bgm.stop();
+
             Greenfoot.setWorld(new GameOver());
         }
         
