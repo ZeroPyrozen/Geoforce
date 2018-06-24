@@ -31,7 +31,7 @@ public class Player extends Actor
         // Add your action code here.
         if(isAlive)
         {
-            showScore();
+            showInfo();
             flight();
             if(isBoundaries()!=0)
             {
@@ -131,9 +131,10 @@ public class Player extends Actor
             setLocation(getX(),getY()+flightSpeed);
         }
     }
-    public void showScore()
+    public void showInfo()
     {
-       getWorld().showText("Score: "+score, 100, 200);
+       getWorld().showText("Score: "+score, 100, 50);
+       getWorld().showText("Lives: "+lives, 100, 100);
     }
     public void shoot()
     {
@@ -151,6 +152,14 @@ public class Player extends Actor
     {
         this.bg = bg;
         return bg;
+    }
+    public int setScore(int score)
+    {
+        return this.score = score;
+    }
+    public int getScore()
+    {
+        return score;
     }
     
 }

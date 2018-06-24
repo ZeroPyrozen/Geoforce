@@ -17,6 +17,7 @@ public class RegularShip extends Enemy
     public int dy = 0;
     public int direct = 0;
     private int fire_rate = 20;
+    private boolean hasDirection = false;
     
     public RegularShip(int i,int j,int dir)
     {
@@ -53,43 +54,39 @@ public class RegularShip extends Enemy
     public void movement()
     {
         
-        if(direct==3)
-        {
-            if(getWorld().getObjects(Player.class).isEmpty())
-                return;
-            Actor player = (Actor)getWorld().getObjects(Player.class).get(0);
-            if(player!=null)
-            {
-            if(Greenfoot.getRandomNumber(100) < 40)
-                turnTowards(player.getX(),player.getY());
-            
-            }
-            move(10);
-        }
-        else
-        {
-            setLocation(getX()-xTambah,getY()+yTambah);
-            Actor player = (Actor)getWorld().getObjects(Player.class).get(0);
-            
-            if(getX() == player.getX()&&direct ==1 || getX() == player.getX()&&direct ==0)
-            {
-                
-                xTambah = 0;
-                yTambah += 2;
-            
-            }
-            else
-            {
-                if( direct == 0)
+
+
+                Actor player = (Actor)getWorld().getObjects(Player.class).get(0);
+                if(getX() == player.getX()&&direct ==1 || getX() == player.getX()&&direct ==0)
                 {
-                    xTambah += dy;
+                    xTambah = 0;
+                    yTambah = 10;
+                    if( direct == 0)
+                    {
+                        xTambah += dy;
+                        setLocation(getX()-xTambah,getY()+yTambah);
+                    }
+                    else if(direct == 1)
+                    {
+                        xTambah += dy;
+                        setLocation(getX()+xTambah,getY()+yTambah);
+                    }
                 }
-                else if(direct == 1)
+                else
                 {
-                    xTambah -= dy;
+                    if( direct == 0)
+                    {
+                        xTambah += dy;
+                        setLocation(getX()-xTambah,getY()+yTambah);
+                    }
+                    else if(direct == 1)
+                    {
+                        xTambah += dy;
+                        setLocation(getX()+xTambah,getY()+yTambah);
+                    }
                 }
-            }
-        }
+            
+        
 
     }
    

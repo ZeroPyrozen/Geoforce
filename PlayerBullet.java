@@ -27,16 +27,29 @@ public class PlayerBullet extends Actor
             setLocation(getX(),getY()+bulletSpeed);
         if(isTouching(RegularShip.class))
         {
-            Actor RegularShip;
-            Actor PlayerBullet;
-            PlayerBullet = getOneIntersectingObject(PlayerBullet.class);
-            RegularShip = getOneIntersectingObject(RegularShip.class);
-            if(RegularShip!=null)
+            Actor regularShip;
+            Actor playerBullet;
+            playerBullet = getOneIntersectingObject(PlayerBullet.class);
+            regularShip = getOneIntersectingObject(RegularShip.class);
+            if(regularShip!=null)
             {
-                getWorld().removeObject(RegularShip);
-                getWorld().removeObject(PlayerBullet);
+                getWorld().removeObject(regularShip);
+                getWorld().removeObject(playerBullet);
             }
-                
+             
         }
+        if(isTouching(ParticleGenerator.class))
+        {
+            Actor playerBullet;
+            Actor particleAs;
+            particleAs = getOneIntersectingObject(ParticleGenerator.class);
+            playerBullet = getOneIntersectingObject(PlayerBullet.class);
+            if(particleAs!=null)
+            {
+                getWorld().removeObject(particleAs);
+                getWorld().removeObject(playerBullet);
+            }
+        }
+         
     }    
 }

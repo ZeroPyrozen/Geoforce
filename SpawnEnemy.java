@@ -32,32 +32,17 @@ public class SpawnEnemy extends Actor
         }
         if((currentTimeM/1000)<=800)
         {
-            if(count==40)
+            if(count==60)
             {
                 basicWave();
-            }
-            else if(count == 60)
-            {
-                basicWave();
-                count = 0;
+                count=0;
             }
             count++;
             
         }
-        else if((currentTimeM/1000)>=800&&(currentTimeM/1000)<=1600)
-        {
-            if(count==80)
-            {
-                suicideWave();
-                count = 0;
-            }
-            count++;
-        }
         //System.out.println(timer);
-        if((currentTimeM/1000)%2==0)
-        {
+        if(((currentTimeM-startTime)/10)%10==0)
             spawnParticle1();
-        }
         
         
     }
@@ -66,18 +51,13 @@ public class SpawnEnemy extends Actor
        //Right to Left
        getWorld().addObject(new RegularShip(5,5,0),getWorld().getWidth(),1);
        //Left to Right
-       getWorld().addObject(new RegularShip(5,5,1),1,100);
+       getWorld().addObject(new RegularShip(5,5,1),20,100);
        
     }
-    public void suicideWave()
-    {
-        getWorld().addObject(new RegularShip(5,5,3),getWorld().getWidth(),1);
-        getWorld().addObject(new RegularShip(5,5,3),1,1);
-    }
+
     public void spawnParticle1()
     {
         ParticleGenerator s = new ParticleGenerator(0);
-        for(int i=0; i<20; i++)
             getWorld().addObject(s, Greenfoot.getRandomNumber(getWorld().getWidth()), 0);
     }
     public void spawnParticle2()
