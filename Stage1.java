@@ -15,7 +15,7 @@ public class Stage1 extends World
     {
         //Adding Up Player
         Player play = new Player();
-        GreenfootSound bgm = new GreenfootSound("bgm1.mp3");
+        GreenfootSound bgm = new GreenfootSound("bgm.mp3");
         bgm.play();
         addObject(play,getWidth()/2,600);
         HitBox play1 = new HitBox();

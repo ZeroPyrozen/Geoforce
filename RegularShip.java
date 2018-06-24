@@ -70,6 +70,7 @@ public class RegularShip extends Enemy
         {
             setLocation(getX()-xTambah,getY()+yTambah);
             Actor player = (Actor)getWorld().getObjects(Player.class).get(0);
+            
             if(getX() == player.getX()&&direct ==1 || getX() == player.getX()&&direct ==0)
             {
                 
